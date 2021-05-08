@@ -90,8 +90,7 @@ class Butterfly:
         self.fitness = self.func(self.position)
         a = linear_interpolation(self.a_min, a_max, iteration_ratio)
         self.fragrance = self.c * self.fitness ** a
-        score = np.copy(self.fragrance)
-        return score, self.position
+        return self.fragrance, self.position
 
 
 class SubSwarm:
@@ -270,7 +269,6 @@ if __name__ == '__main__':
                             dict_result['mean_score'] = sum(scores) / len(scores)
                             dict_result['mean_iterations'] = sum(iterations) / len(iterations)
                             dict_result['histories'] = histories
-
                             json_content['results'].append(dict_result)
 
         with open(f'{function.__name__}.json', 'w') as outfile:
